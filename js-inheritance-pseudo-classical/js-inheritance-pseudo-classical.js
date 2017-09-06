@@ -42,7 +42,7 @@ var Phone = function(phoneNumber) {
 
   this.phoneNumber = phoneNumber;
   this.message=message;
- this.recipientPhoneNumber=recipientPhoneNumber
+ this.recipientPhoneNumber=recipientPhoneNumber;
 
   };
 Phone.pototype.send = function(recipientPhoneNumber, message) {
@@ -59,9 +59,9 @@ this.phoneNumber=phoneNumber;
 SmartPhone.prototype.send = function(recipientPhoneNumberOrEmail, message) {
     if (typeof recipientPhoneNumberOrEmail === 'number') {
 
-      var constant=this;
+      var context=this;
       // We need `.call` here to make sure that `this` will reference our smart phone in makePhone's send
-      return constant.oldSend.call(this, recipientPhoneNumberOrEmail, message);
+      return context.Send.call(this, recipientPhoneNumberOrEmail, message);
     } else {
       return 'sending the message "' + message + '" to email ' + recipientPhoneNumberOrEmail + ' from ' + this.email;
     }
